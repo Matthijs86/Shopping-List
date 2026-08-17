@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Registreer Service Worker voor PWA functionaliteit
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker
-            .register("/Shopping-list/sw.js") // Controleer of je bestand op GitHub sw.js of service-worker.js heet!
+            .register("/Shopping-List/sw.js") // Controleer of je bestand op GitHub sw.js of service-worker.js heet!
             .then(function(reg) {
                 console.log("Service Worker succesvol geregistreerd met scope:", reg.scope);
             })
