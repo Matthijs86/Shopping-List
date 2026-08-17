@@ -686,56 +686,39 @@ select option {
    MOBIEL
 ===================================== */
 
+/* =====================================
+   MOBIEL (Gecorrigeerd & Sluitend)
+===================================== */
+
 @media (max-width: 900px) {
-
     body {
-
         padding: 20px 12px;
     }
 
-
     .invoer {
-
-        grid-template-columns:
-            1fr 1fr;
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
-
-
-    .productVeld {
-
-        grid-column: 1 / -1;
-    }
-
-
-    #toevoegen {
-
-        grid-column: 1 / -1;
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    body {
-
-        padding: 0;
-
-    }
-
 
     .app {
-
-        min-height: 100vh;
-
-        padding:
-            25px 15px 35px;
-
-        border: none;
-
-        border-radius: 0;
-
+        padding: 20px;
     }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .product {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .aantalControls {
+        justify-content: space-between;
+    }
+}
+
 
 
     h1 {
