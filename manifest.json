@@ -2,8 +2,8 @@
     "name": "Boodschappenlijst",
     "short_name": "Boodschappen",
     "description": "Mijn persoonlijke boodschappenlijst",
-    "start_url": "/Shopping-List/index.html",
-    "scope": "/Shopping-List/",
+    "start_url": "./",
+    "scope": "./",
     "display": "standalone",
     "orientation": "portrait",
     "background_color": "#08090d",
@@ -15,16 +15,10 @@
     ],
     "icons": [
         {
-            "src": "/Shopping-List/icons/icon-192x192.png",
+            "src": "./icon-192.png",
             "sizes": "192x192",
             "type": "image/png",
-            "purpose": "any"
-        },
-        {
-            "src": "/Shopping-List/icon-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "maskable"
+            "purpose": "any maskable"
         }
     ]
 }
