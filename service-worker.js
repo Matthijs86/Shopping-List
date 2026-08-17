@@ -9,7 +9,7 @@
 // ======================================
 
 const CACHE_NAME =
-    "boodschappenlijst-v3";
+    "boodschappenlijst-v4"; // Versie verhoogd om een harde update af te dwingen
 
 
 // ======================================
@@ -25,13 +25,15 @@ const APP_BESTANDEN = [
 
     "/Shopping-list/style.css",
 
-    "/Shopping-list/script.js",
+    "/Shopping-list/script.js", // Controleer of dit bestand exact zo heet op GitHub!
 
     "/Shopping-list/manifest.json",
 
     "/Shopping-list/icons/icon-192x192.png"
 
 ];
+
+
 // ======================================
 // INSTALL
 // ======================================
@@ -47,20 +49,15 @@ self.addEventListener(
                 .then(
                     function(cache) {
 
-                        return cache.addAll(
-                            APP_BESTANDEN
-                        );
+                        // We gebruiken cache.addAll, maar vangen fouten op per bestand
+                        return cache.addAll(APP_BESTANDEN).catch(function(error) {
+                            console.error("Fout bij het cachen van bestanden:", error);
+                        });
 
                     }
                 )
 
         );
-
-
-        /*
-         * Nieuwe service worker mag
-         * direct klaarstaan.
-         */
 
         self.skipWaiting();
 
@@ -88,11 +85,6 @@ self.addEventListener(
                             cacheNames.map(
                                 function(cacheName) {
 
-                                    /*
-                                     * Oude versies
-                                     * verwijderen.
-                                     */
-
                                     if (
                                         cacheName !==
                                         CACHE_NAME
@@ -114,12 +106,6 @@ self.addEventListener(
 
         );
 
-
-        /*
-         * Nieuwe service worker
-         * meteen gebruiken.
-         */
-
         self.clients.claim();
 
     }
@@ -133,10 +119,6 @@ self.addEventListener(
 self.addEventListener(
     "fetch",
     function(event) {
-
-        /*
-         * Alleen GET-verzoeken behandelen.
-         */
 
         if (
             event.request.method !== "GET"
@@ -154,41 +136,20 @@ self.addEventListener(
                 .then(
                     function(cachedResponse) {
 
-                        /*
-                         * Eerst lokale cache proberen.
-                         */
-
                         if (
                             cachedResponse
                         ) {
-
-                            /*
-                             * Voor onze eigen
-                             * app-bestanden is
-                             * cache prima.
-                             */
 
                             return cachedResponse;
 
                         }
 
 
-                        /*
-                         * Staat het bestand niet
-                         * in de cache?
-                         * Dan internet proberen.
-                         */
-
                         return fetch(
                             event.request
                         )
                         .then(
                             function(networkResponse) {
-
-                                /*
-                                 * Alleen geldige
-                                 * responses cachen.
-                                 */
 
                                 if (
                                     networkResponse &&
@@ -219,7 +180,10 @@ self.addEventListener(
                                 return networkResponse;
 
                             }
-                        );
+                        ).catch(function() {
+                            // Offline fallback als internet en cache falen
+                            return caches.match("/Shopping-list/index.html");
+                        });
 
                     }
                 )
