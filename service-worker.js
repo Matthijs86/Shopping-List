@@ -1,26 +1,39 @@
 // ======================================
-// BOODSCHAPPENLIJST SERVICE WORKER
+// BOODSCHAPPENLIJST PWA
+// SERVICE WORKER
+// ======================================
+
+
+// ======================================
+// CACHE VERSIE
 // ======================================
 
 const CACHE_NAME =
-    "boodschappenlijst-cache-v1";
-
-
-const BESTANDEN = [
-
-    "./boodschappenlijst.html",
-
-    "./style.css",
-
-    "./script.js",
-
-    "./manifest.json"
-
-];
+    "boodschappenlijst-v3";
 
 
 // ======================================
-// INSTALLEREN
+// BESTANDEN DIE OFFLINE BESCHIKBAAR
+// MOETEN ZIJN
+// ======================================
+
+const APP_BESTANDEN = [
+
+    "/Shopping-list/",
+
+    "/Shopping-list/index.html",
+
+    "/Shopping-list/style.css",
+
+    "/Shopping-list/script.js",
+
+    "/Shopping-list/manifest.json",
+
+    "/Shopping-list/icons/icon-192x192.png"
+
+];
+// ======================================
+// INSTALL
 // ======================================
 
 self.addEventListener(
@@ -35,7 +48,7 @@ self.addEventListener(
                     function(cache) {
 
                         return cache.addAll(
-                            BESTANDEN
+                            APP_BESTANDEN
                         );
 
                     }
@@ -44,7 +57,10 @@ self.addEventListener(
         );
 
 
-        // Nieuwe versie meteen activeren
+        /*
+         * Nieuwe service worker mag
+         * direct klaarstaan.
+         */
 
         self.skipWaiting();
 
@@ -53,7 +69,7 @@ self.addEventListener(
 
 
 // ======================================
-// ACTIVEREN
+// ACTIVATE
 // ======================================
 
 self.addEventListener(
@@ -62,7 +78,8 @@ self.addEventListener(
 
         event.waitUntil(
 
-            caches.keys()
+            caches
+                .keys()
                 .then(
                     function(cacheNames) {
 
@@ -70,6 +87,11 @@ self.addEventListener(
 
                             cacheNames.map(
                                 function(cacheName) {
+
+                                    /*
+                                     * Oude versies
+                                     * verwijderen.
+                                     */
 
                                     if (
                                         cacheName !==
@@ -93,6 +115,11 @@ self.addEventListener(
         );
 
 
+        /*
+         * Nieuwe service worker
+         * meteen gebruiken.
+         */
+
         self.clients.claim();
 
     }
@@ -100,34 +127,102 @@ self.addEventListener(
 
 
 // ======================================
-// BESTANDEN OPVRAGEN
+// FETCH
 // ======================================
 
 self.addEventListener(
     "fetch",
     function(event) {
 
+        /*
+         * Alleen GET-verzoeken behandelen.
+         */
+
+        if (
+            event.request.method !== "GET"
+        ) {
+
+            return;
+
+        }
+
+
         event.respondWith(
 
-            caches.match(
-                event.request
-            )
-            .then(
-                function(cachedResponse) {
+            caches
+                .match(event.request)
+                .then(
+                    function(cachedResponse) {
 
-                    if (cachedResponse) {
+                        /*
+                         * Eerst lokale cache proberen.
+                         */
 
-                        return cachedResponse;
+                        if (
+                            cachedResponse
+                        ) {
+
+                            /*
+                             * Voor onze eigen
+                             * app-bestanden is
+                             * cache prima.
+                             */
+
+                            return cachedResponse;
+
+                        }
+
+
+                        /*
+                         * Staat het bestand niet
+                         * in de cache?
+                         * Dan internet proberen.
+                         */
+
+                        return fetch(
+                            event.request
+                        )
+                        .then(
+                            function(networkResponse) {
+
+                                /*
+                                 * Alleen geldige
+                                 * responses cachen.
+                                 */
+
+                                if (
+                                    networkResponse &&
+                                    networkResponse.status === 200 &&
+                                    networkResponse.type !== "opaque"
+                                ) {
+
+                                    const responseCopy =
+                                        networkResponse.clone();
+
+
+                                    caches
+                                        .open(CACHE_NAME)
+                                        .then(
+                                            function(cache) {
+
+                                                cache.put(
+                                                    event.request,
+                                                    responseCopy
+                                                );
+
+                                            }
+                                        );
+
+                                }
+
+
+                                return networkResponse;
+
+                            }
+                        );
 
                     }
-
-
-                    return fetch(
-                        event.request
-                    );
-
-                }
-            )
+                )
 
         );
 

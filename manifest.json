@@ -2,8 +2,8 @@
     "name": "Boodschappenlijst",
     "short_name": "Boodschappen",
     "description": "Mijn persoonlijke boodschappenlijst",
-    "start_url": "./index.html",
-    "scope": "./",
+    "start_url": "/Shopping-list/index.html",
+    "scope": "/Shopping-list/",
     "display": "standalone",
     "orientation": "portrait",
     "background_color": "#08090d",
@@ -12,5 +12,13 @@
     "categories": [
         "shopping",
         "productivity"
+    ],
+    "icons": [
+        {
+            "src": "./icons/icon-192x192.png",
+            "sizes": "192x192 512x512",
+            "type": "image/png",
+            "purpose": "any"
+        }
     ]
 }
