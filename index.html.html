@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- viewport-fit=cover toegevoegd voor randloze iPhone-schermen -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#08090d">
+    <meta name="description" content="Mijn persoonlijke boodschappenlijst">
+    <title>Boodschappenlijst</title>
+
+    <!-- ==========================
+         PWA MANIFEST
+    =========================== -->
+    <!-- Pad veranderd naar absoluut om te matchen met de Service Worker scope -->
+    <link rel="manifest" href="/Shopping-list/manifest.json">
+
+    <!-- ==========================
+         APPLE / IPHONE
+    =========================== -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Boodschappen">
+    <!-- CRUCIEEL: Apple Touch Icon toegevoegd (iOS negeert het manifest-bestand) -->
+    <link rel="apple-touch-icon" href="/Shopping-list/icons/icon-192x192.png">
+
+    <!-- ==========================
+         CSS
+    =========================== -->
+    <!-- Pad veranderd naar absoluut conform je Service Worker caching -->
+    <link rel="stylesheet" href="/Shopping-list/style.css">
+</head>
+
+<body>
+    <main class="app">
+        <!-- ==========================
+             HEADER
+        =========================== -->
+        <header class="appHeader">
+            <h1>Boodschappenlijst</h1>
+            <p class="status" id="offlineStatus">
+                ✓ Lijst wordt lokaal opgeslagen
+            </p>
+        </header>
+
+        <!-- ==========================
+             PRODUCT TOEVOEGEN
+        =========================== -->
+        <section class="invoer">
+            <!-- PRODUCT -->
+            <div class="veld productVeld">
+                <label for="productInput">Product</label>
+                <input type="text" id="productInput" placeholder="Bijv. Tomaten" autocomplete="off">
+            </div>
+
+            <!-- EENHEID -->
+            <div class="veld">
+                <label for="eenheidInput">Eenheid</label>
+                <select id="eenheidInput">
+                    <option value="stuks">Stuk</option>
+                    <option value="gram">Gram</option>
+                    <option value="ml">ml</option>
+                </select>
+            </div>
+
+            <!-- HOEVEELHEID -->
+            <div class="veld">
+                <label for="hoeveelheidInput">Hoeveelheid</label>
+                <input type="number" id="hoeveelheidInput" min="1" step="1" value="1">
+            </div>
+
+            <!-- CATEGORIE -->
+            <div class="veld">
+                <label for="categorieInput">Categorie</label>
+                <select id="categorieInput">
+                    <option value="Groente">Groente</option>
+                    <option value="Fruit">Fruit</option>
+                    <option value="Zuivel">Zuivel</option>
+                    <option value="Brood">Brood</option>
+                    <option value="Vlees & Vis">Vlees & Vis</option>
+                    <option value="Dranken">Dranken</option>
+                    <option value="Diepvries">Diepvries</option>
+                    <option value="Snacks">Snacks</option>
+                    <option value="Houdbaar">Houdbaar</option>
+                    <option value="Huishouden">Huishouden</option>
+                    <option value="Persoonlijke verzorging">Persoonlijke verzorging</option>
+                    <option value="Overig">Overig</option>
+                </select>
+            </div>
+
+            <!-- TOEVOEGEN -->
+            <button id="toevoegen" type="button">+ Toevoegen</button>
+        </section>
+
+        <!-- ==========================
+             UITLEG
+        =========================== -->
+        <p class="uitleg">
+            Gram: +50 g &nbsp;•&nbsp; ml: +100 ml &nbsp;•&nbsp; Stuk: +1
+        </p>
+
+        <!-- ==========================
+             LIJST ACTIES
+        =========================== -->
+        <div class="lijstActies">
+            <button id="lijstLeegmaken" type="button">Lijst leegmaken</button>
+        </div>
+
+        <!-- ==========================
+             BOODSCHAPPENLIJST
+        =========================== -->
+        <div id="boodschappenLijst"></div>
+    </main>
+
+    <!-- ==========================
+         JAVASCRIPT
+    =========================== -->
+    <!-- Pad veranderd naar absoluut voor correcte registratie en caching -->
+    <script src="/Shopping-list/script.js"></script>
+</body>
+
+</html>

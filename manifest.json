@@ -13,12 +13,18 @@
         "shopping",
         "productivity"
     ],
-  "icons": [
+    "icons": [
         {
-            "src": "./icons/icon-192x192.png",
+            "src": "/Shopping-list/icons/icon-192x192.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "any"
+        },
+        {
+            "src": "/Shopping-list/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ]
 }

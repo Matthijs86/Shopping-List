@@ -1,194 +1,88 @@
 // ======================================
-// BOODSCHAPPENLIJST PWA
-// SERVICE WORKER
+// BOODSCHAPPENLIJST PWA - SERVICE WORKER
 // ======================================
 
-
-// ======================================
-// CACHE VERSIE
-// ======================================
-
-const CACHE_NAME =
-    "boodschappenlijst-v4"; // Versie verhoogd om een harde update af te dwingen
-
-
-// ======================================
-// BESTANDEN DIE OFFLINE BESCHIKBAAR
-// MOETEN ZIJN
-// ======================================
+const CACHE_NAME = "boodschappenlijst-v5";
 
 const APP_BESTANDEN = [
-
     "/Shopping-list/",
-
     "/Shopping-list/index.html",
-
     "/Shopping-list/style.css",
-
-    "/Shopping-list/script.js", // Controleer of dit bestand exact zo heet op GitHub!
-
+    "/Shopping-list/script.js",
     "/Shopping-list/manifest.json",
-
     "/Shopping-list/icons/icon-192x192.png"
-
 ];
 
+// ======================================
+// INSTALL (Rbuust individueel cachen)
+// ======================================
+self.addEventListener("install", function(event) {
+    event.waitUntil(
+        caches.open(CACHE_NAME).then(function(cache) {
+            // Probeer elk bestand los te cachen zodat één 404 niet alles blokkeert
+            const cachePromises = APP_BESTANDEN.map(function(url) {
+                return cache.add(url).catch(function(error) {
+                    console.error("Kon bestand niet cachen:", url, error);
+                });
+            });
+            return Promise.all(cachePromises);
+        })
+    );
+    self.skipWaiting();
+});
 
 // ======================================
-// INSTALL
+// ACTIVATE (Oude caches opruimen)
 // ======================================
-
-self.addEventListener(
-    "install",
-    function(event) {
-
-        event.waitUntil(
-
-            caches
-                .open(CACHE_NAME)
-                .then(
-                    function(cache) {
-
-                        // We gebruiken cache.addAll, maar vangen fouten op per bestand
-                        return cache.addAll(APP_BESTANDEN).catch(function(error) {
-                            console.error("Fout bij het cachen van bestanden:", error);
-                        });
-
+self.addEventListener("activate", function(event) {
+    event.waitUntil(
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.map(function(cacheName) {
+                    if (cacheName !== CACHE_NAME) {
+                        return caches.delete(cacheName);
                     }
-                )
+                })
+            );
+        })
+    );
+    self.clients.claim();
+});
 
-        );
-
-        self.skipWaiting();
-
+// ======================================
+// FETCH (Cache-first met netwerk fallback)
+// ======================================
+self.addEventListener("fetch", function(event) {
+    // Negeer niet-GET verzoeken en cross-origin extensies (zoals Chrome extensions)
+    if (event.request.method !== "GET" || !event.request.url.startsWith(self.location.origin)) {
+        return;
     }
-);
 
+    event.respondWith(
+        caches.match(event.request).then(function(cachedResponse) {
+            if (cachedResponse) {
+                return cachedResponse;
+            }
 
-// ======================================
-// ACTIVATE
-// ======================================
+            return fetch(event.request).then(function(networkResponse) {
+                // Controleer op geldige respons voordat we cachen
+                if (!networkResponse || networkResponse.status !== 200 || networkResponse.type === "opaque") {
+                    return networkResponse;
+                }
 
-self.addEventListener(
-    "activate",
-    function(event) {
+                const responseCopy = networkResponse.clone();
+                caches.open(CACHE_NAME).then(function(cache) {
+                    cache.put(event.request, responseCopy);
+                });
 
-        event.waitUntil(
+                return networkResponse;
+            }).catch(function() {
+                // Offline fallback voor navigatieverzoeken
+                if (event.request.mode === "navigate") {
+                    return caches.match("/Shopping-list/index.html");
+                }
+            });
+        })
+    );
+});
 
-            caches
-                .keys()
-                .then(
-                    function(cacheNames) {
-
-                        return Promise.all(
-
-                            cacheNames.map(
-                                function(cacheName) {
-
-                                    if (
-                                        cacheName !==
-                                        CACHE_NAME
-                                    ) {
-
-                                        return caches.delete(
-                                            cacheName
-                                        );
-
-                                    }
-
-                                }
-                            )
-
-                        );
-
-                    }
-                )
-
-        );
-
-        self.clients.claim();
-
-    }
-);
-
-
-// ======================================
-// FETCH
-// ======================================
-
-self.addEventListener(
-    "fetch",
-    function(event) {
-
-        if (
-            event.request.method !== "GET"
-        ) {
-
-            return;
-
-        }
-
-
-        event.respondWith(
-
-            caches
-                .match(event.request)
-                .then(
-                    function(cachedResponse) {
-
-                        if (
-                            cachedResponse
-                        ) {
-
-                            return cachedResponse;
-
-                        }
-
-
-                        return fetch(
-                            event.request
-                        )
-                        .then(
-                            function(networkResponse) {
-
-                                if (
-                                    networkResponse &&
-                                    networkResponse.status === 200 &&
-                                    networkResponse.type !== "opaque"
-                                ) {
-
-                                    const responseCopy =
-                                        networkResponse.clone();
-
-
-                                    caches
-                                        .open(CACHE_NAME)
-                                        .then(
-                                            function(cache) {
-
-                                                cache.put(
-                                                    event.request,
-                                                    responseCopy
-                                                );
-
-                                            }
-                                        );
-
-                                }
-
-
-                                return networkResponse;
-
-                            }
-                        ).catch(function() {
-                            // Offline fallback als internet en cache falen
-                            return caches.match("/Shopping-list/index.html");
-                        });
-
-                    }
-                )
-
-        );
-
-    }
-);
