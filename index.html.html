@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#08090d"
+    >
+
+    <meta
+        name="description"
+        content="Mijn persoonlijke boodschappenlijst"
+    >
+
+    <title>Boodschappenlijst</title>
+
+    <!-- PWA -->
+    <link
+        rel="manifest"
+        href="manifest.json"
+    >
+
+    <!-- iPhone / iPad -->
+    <meta
+        name="apple-mobile-web-app-capable"
+        content="yes"
+    >
+
+    <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent"
+    >
+
+    <meta
+        name="apple-mobile-web-app-title"
+        content="Boodschappen"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+
+<body>
+
+    <main class="app">
+
+        <!-- ==========================
+             TITEL
+        =========================== -->
+
+        <header class="appHeader">
+
+            <h1>Boodschappenlijst</h1>
+
+            <p class="status" id="offlineStatus">
+                ✓ Lijst wordt lokaal opgeslagen
+            </p>
+
+        </header>
+
+
+        <!-- ==========================
+             PRODUCT TOEVOEGEN
+        =========================== -->
+
+        <section class="invoer">
+
+            <!-- PRODUCT -->
+
+            <div class="veld productVeld">
+
+                <label for="productInput">
+                    Product
+                </label>
+
+                <input
+                    type="text"
+                    id="productInput"
+                    placeholder="Bijv. Tomaten"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- EENHEID -->
+
+            <div class="veld">
+
+                <label for="eenheidInput">
+                    Eenheid
+                </label>
+
+                <select id="eenheidInput">
+
+                    <option value="stuks">
+                        Stuk
+                    </option>
+
+                    <option value="gram">
+                        Gram
+                    </option>
+
+                    <option value="ml">
+                        ml
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- HOEVEELHEID -->
+
+            <div class="veld">
+
+                <label for="hoeveelheidInput">
+                    Hoeveelheid
+                </label>
+
+                <input
+                    type="number"
+                    id="hoeveelheidInput"
+                    min="1"
+                    step="1"
+                    value="1"
+                >
+
+            </div>
+
+
+            <!-- CATEGORIE -->
+
+            <div class="veld">
+
+                <label for="categorieInput">
+                    Categorie
+                </label>
+
+                <select id="categorieInput">
+
+                    <option value="Groente">
+                        Groente
+                    </option>
+
+                    <option value="Fruit">
+                        Fruit
+                    </option>
+
+                    <option value="Zuivel">
+                        Zuivel
+                    </option>
+
+                    <option value="Brood">
+                        Brood
+                    </option>
+
+                    <option value="Vlees & Vis">
+                        Vlees & Vis
+                    </option>
+
+                    <option value="Dranken">
+                        Dranken
+                    </option>
+
+                    <option value="Diepvries">
+                        Diepvries
+                    </option>
+
+                    <option value="Snacks">
+                        Snacks
+                    </option>
+
+                    <option value="Houdbaar">
+                        Houdbaar
+                    </option>
+
+                    <option value="Huishouden">
+                        Huishouden
+                    </option>
+
+                    <option value="Persoonlijke verzorging">
+                        Persoonlijke verzorging
+                    </option>
+
+                    <option value="Overig">
+                        Overig
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- TOEVOEGEN -->
+
+            <button
+                id="toevoegen"
+                type="button"
+            >
+                + Toevoegen
+            </button>
+
+        </section>
+
+
+        <p class="uitleg">
+            Gram: +50 g &nbsp;•&nbsp;
+            ml: +100 ml &nbsp;•&nbsp;
+            Stuk: +1
+        </p>
+
+
+        <!-- ==========================
+             LIJST ACTIES
+        =========================== -->
+
+        <div class="lijstActies">
+
+            <button
+                id="lijstLeegmaken"
+                type="button"
+            >
+                Lijst leegmaken
+            </button>
+
+        </div>
+
+
+        <!-- ==========================
+             BOODSCHAPPENLIJST
+        =========================== -->
+
+        <div id="boodschappenLijst"></div>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

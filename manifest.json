@@ -1,0 +1,16 @@
+{
+    "name": "Boodschappenlijst",
+    "short_name": "Boodschappen",
+    "description": "Mijn persoonlijke boodschappenlijst",
+    "start_url": "./index.html",
+    "scope": "./",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#08090d",
+    "theme_color": "#08090d",
+    "lang": "nl-NL",
+    "categories": [
+        "shopping",
+        "productivity"
+    ]
+}
