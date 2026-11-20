@@ -818,4 +818,42 @@ select option {
     }
 
 }
+/* ======================================
+   RODE NEON KNOP - LIJST LEEGMAKEN
+   ====================================== */
+
+#lijstLeegmaken {
+    background: linear-gradient(
+        135deg,
+        #ff5268,
+        #d9002f
+    );
+
+    color: #ffffff;
+
+    border: 2px solid #ff8292;
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 8px rgba(255, 40, 70, 0.9),
+        0 0 18px rgba(255, 40, 70, 0.7),
+        0 0 30px rgba(255, 40, 70, 0.4);
+
+    text-shadow:
+        0 0 6px rgba(255, 255, 255, 0.8);
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+#lijstLeegmaken:hover {
+    box-shadow:
+        0 0 12px rgba(255, 40, 70, 1),
+        0 0 25px rgba(255, 40, 70, 0.9),
+        0 0 40px rgba(255, 40, 70, 0.6);
+
+    transform: scale(1.03);
+}
 
