@@ -491,34 +491,6 @@ plusKnop.addEventListener("click", function(event) {
     wijzigHoeveelheid(index, 1);
 });
 
-
-                    // Verwijderknop
-
-                    const verwijderKnop =
-                        document.createElement("button");
-
-                    verwijderKnop.type =
-                        "button";
-
-                    verwijderKnop.className =
-                        "verwijder-btn";
-
-                    verwijderKnop.innerHTML =
-                        "&times;";
-
-
-                    verwijderKnop.addEventListener(
-                        "click",
-                        function(event) {
-
-                            event.stopPropagation();
-
-                            verwijderProduct(index);
-
-                        }
-                    );
-
-
                     // Alles toevoegen
 
                     productRegel.appendChild(
@@ -535,12 +507,7 @@ plusKnop.addEventListener("click", function(event) {
 productRegel.appendChild(
     plusKnop
 );
-
-                    productRegel.appendChild(
-                        verwijderKnop
-                    );
-
-
+    
                     categorieBlok.appendChild(
                         productRegel
                     );
