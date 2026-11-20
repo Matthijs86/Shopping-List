@@ -1089,5 +1089,18 @@ select option {
     font-weight: 700;
     color: #285b78;
 }
+/* Kleinere plus- en minknoppen */
+
+.hoeveelheid-knop {
+    width: 27px;
+    height: 27px;
+    min-height: 27px;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    border-radius: 7px;
+    padding: 0;
+}
 
 
