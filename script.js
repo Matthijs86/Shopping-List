@@ -87,7 +87,7 @@ function krijgStap(eenheid) {
     }
 
     if (eenheid === "ml") {
-        return 100;
+        return 50;
     }
 
     return 1;
