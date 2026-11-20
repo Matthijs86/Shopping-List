@@ -1,3 +1,4 @@
+
 /* =====================================
    BASIS
 ===================================== */
@@ -6,49 +7,32 @@
     box-sizing: border-box;
 }
 
-
 html {
-
     min-height: 100%;
-
-    background: #08090d;
-
+    background: #eaf6ff;
 }
 
-
 body {
-
     margin: 0;
-
     min-height: 100vh;
-
-    padding: 40px 20px;
-
-    color: white;
+    padding: 24px 14px;
+    color: #18364b;
 
     background:
-
         radial-gradient(
-            circle at 10% 10%,
-            #17285a,
+            circle at 5% 5%,
+            rgba(55, 190, 255, 0.20),
             transparent 35%
         ),
-
         radial-gradient(
-            circle at 90% 90%,
-            #40135f,
+            circle at 95% 95%,
+            rgba(70, 220, 145, 0.16),
             transparent 35%
         ),
+        #eaf6ff;
 
-        #08090d;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    -webkit-tap-highlight-color:
-        transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -57,28 +41,19 @@ body {
 ===================================== */
 
 .app {
-
     width: 100%;
-
     max-width: 1100px;
-
     margin: auto;
+    padding: 28px;
 
-    padding: 35px;
+    background: #f8fcff;
 
-    background: #0d0f17;
-
-    border: 1px solid #292d50;
-
-    border-radius: 14px;
+    border: 2px solid #55bdf0;
+    border-radius: 18px;
 
     box-shadow:
-
-        0 0 30px
-        rgba(50, 70, 180, 0.2),
-
-        0 0 70px
-        rgba(130, 40, 190, 0.1);
+        0 0 12px rgba(40, 170, 240, 0.30),
+        0 0 28px rgba(40, 170, 240, 0.16);
 }
 
 
@@ -87,39 +62,26 @@ body {
 ===================================== */
 
 .appHeader {
-
-    margin-bottom: 30px;
-
+    margin-bottom: 24px;
+    text-align: center;
 }
 
-
 h1 {
-
     margin: 0;
 
-    text-align: center;
+    color: #087dbb;
 
-    font-family:
-        Impact,
-        Haettenschweiler,
-        "Arial Narrow Bold",
-        sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(25px, 4vw, 34px);
+    font-weight: 800;
 
-    font-size: 44px;
-
-    letter-spacing: 4px;
-
-    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
 
     text-shadow:
-
-        3px 3px 0 #171a35,
-
-        0 0 10px
-        rgba(80, 100, 255, 0.5),
-
-        0 0 20px
-        rgba(150, 50, 255, 0.25);
+        0 0 7px rgba(30, 170, 245, 0.35),
+        0 0 16px rgba(30, 170, 245, 0.18);
 }
 
 
@@ -128,22 +90,14 @@ h1 {
 ===================================== */
 
 .status {
-
     margin: 8px 0 0;
-
-    color: #6874a7;
-
+    color: #52758b;
     text-align: center;
-
-    font-size: 11px;
-
+    font-size: 12px;
 }
 
-
 .status.offline {
-
-    color: #b67aff;
-
+    color: #d04444;
 }
 
 
@@ -152,7 +106,6 @@ h1 {
 ===================================== */
 
 .invoer {
-
     display: grid;
 
     grid-template-columns:
@@ -163,7 +116,6 @@ h1 {
         auto;
 
     gap: 12px;
-
     align-items: end;
 }
 
@@ -173,25 +125,16 @@ h1 {
 ===================================== */
 
 .veld {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 6px;
 }
 
-
 .veld label {
-
-    color: #9298b4;
-
+    color: #315b72;
     font-size: 11px;
-
     font-weight: bold;
-
-    letter-spacing: 1px;
-
+    letter-spacing: 0.5px;
     text-transform: uppercase;
 }
 
@@ -202,57 +145,42 @@ h1 {
 
 input,
 select {
-
     width: 100%;
-
     height: 46px;
-
     padding: 10px 12px;
 
-    color: white;
+    color: #18364b;
+    background: #ffffff;
 
-    background: #11131c;
-
-    border: 2px solid #272c4c;
-
-    border-radius: 7px;
+    border: 2px solid #8acff0;
+    border-radius: 9px;
 
     outline: none;
-
     font-size: 14px;
 
     transition: 0.2s;
 }
 
-
 input:focus,
 select:focus {
-
-    border-color: #674cff;
+    border-color: #159de0;
 
     box-shadow:
-        0 0 10px
-        rgba(100, 70, 255, 0.3);
+        0 0 7px rgba(20, 160, 230, 0.35),
+        0 0 15px rgba(20, 160, 230, 0.18);
 }
-
 
 input::placeholder {
-
-    color: #6d7185;
+    color: #8199a8;
 }
 
-
 select {
-
     cursor: pointer;
 }
 
-
 select option {
-
-    color: white;
-
-    background: #11131c;
+    color: #18364b;
+    background: #ffffff;
 }
 
 
@@ -261,49 +189,38 @@ select option {
 ===================================== */
 
 #toevoegen {
-
     height: 46px;
-
     padding: 0 20px;
 
-    color: white;
+    color: #ffffff;
 
-    background:
+    background: linear-gradient(
+        135deg,
+        #159fe0,
+        #0879bd
+    );
 
-        linear-gradient(
-            135deg,
-            #263f98,
-            #5a25a5
-        );
+    border: 2px solid #087fc2;
+    border-radius: 9px;
 
-    border: 1px solid #6b52ff;
-
-    border-radius: 7px;
+    box-shadow:
+        0 0 8px rgba(20, 160, 230, 0.35);
 
     font-size: 12px;
-
     font-weight: bold;
-
     text-transform: uppercase;
 
     cursor: pointer;
-
     transition: 0.2s;
 }
 
-
 #toevoegen:hover {
-
-    transform: translateY(-1px);
-
     box-shadow:
-        0 0 15px
-        rgba(90, 80, 255, 0.4);
+        0 0 12px rgba(20, 160, 230, 0.55),
+        0 0 22px rgba(20, 160, 230, 0.25);
 }
 
-
 #toevoegen:active {
-
     transform: scale(0.97);
 }
 
@@ -313,14 +230,11 @@ select option {
 ===================================== */
 
 .uitleg {
-
     margin: 12px 0 25px;
-
-    color: #686e87;
-
+    color: #648397;
     text-align: center;
-
     font-size: 12px;
+    line-height: 1.6;
 }
 
 
@@ -329,42 +243,35 @@ select option {
 ===================================== */
 
 .lijstActies {
-
     display: flex;
-
     justify-content: flex-end;
-
     margin-bottom: 25px;
 }
 
-
 #lijstLeegmaken {
+    padding: 10px 14px;
 
-    padding: 9px 14px;
+    color: #c52f3c;
+    background: #fff5f5;
 
-    color: #d38cff;
+    border: 2px solid #ef7c84;
+    border-radius: 9px;
 
-    background: #24152d;
-
-    border: 1px solid #602b76;
-
-    border-radius: 7px;
+    box-shadow:
+        0 0 7px rgba(235, 70, 80, 0.20);
 
     font-size: 12px;
-
     font-weight: bold;
 
     cursor: pointer;
-
     transition: 0.2s;
 }
 
-
 #lijstLeegmaken:hover {
+    background: #ffe5e7;
 
-    color: white;
-
-    background: #48203e;
+    box-shadow:
+        0 0 12px rgba(235, 70, 80, 0.35);
 }
 
 
@@ -373,47 +280,25 @@ select option {
 ===================================== */
 
 .legeLijst {
-
-    padding: 60px 20px;
-
+    padding: 45px 15px;
     text-align: center;
-
-    color: #686e87;
+    color: #52758b;
 }
 
-
 .legeLijstIcon {
-
     margin-bottom: 15px;
-
     font-size: 42px;
 }
 
-
 .legeLijst h2 {
-
     margin: 0 0 8px;
-
-    color: #aab8ff;
-
-    font-family:
-        Impact,
-        Haettenschweiler,
-        "Arial Narrow Bold",
-        sans-serif;
-
-    font-weight: normal;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
+    color: #087dbb;
+    font-size: 20px;
+    font-weight: bold;
 }
 
-
 .legeLijst p {
-
     margin: 0;
-
     font-size: 13px;
 }
 
@@ -423,38 +308,26 @@ select option {
 ===================================== */
 
 .categorie {
-
-    margin-bottom: 28px;
+    margin-bottom: 26px;
 }
 
-
 .categorie h2 {
-
     margin: 0 0 10px;
+    padding: 10px 13px;
 
-    padding: 9px 12px;
+    color: #087dbb;
+    background: #e3f5ff;
 
-    color: #aab8ff;
+    border: 1px solid #75c9f0;
+    border-left: 5px solid #159fe0;
+    border-radius: 8px;
 
-    background: #101426;
+    box-shadow:
+        0 0 8px rgba(40, 170, 240, 0.18);
 
-    border-left: 4px solid #654cff;
-
-    border-radius: 5px;
-
-    font-family:
-        Impact,
-        Haettenschweiler,
-        "Arial Narrow Bold",
-        sans-serif;
-
-    font-size: 20px;
-
-    font-weight: normal;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
 
@@ -463,34 +336,33 @@ select option {
 ===================================== */
 
 .product {
-
     display: flex;
-
     align-items: center;
-
     gap: 12px;
 
     margin-bottom: 8px;
+    padding: 13px;
 
-    padding: 14px;
+    background: #ffffff;
 
-    background: #10121b;
+    border: 1px solid #a8d9ee;
+    border-left: 4px solid #28a7df;
+    border-radius: 9px;
 
-    border: 1px solid #252943;
-
-    border-left: 3px solid #354cbb;
-
-    border-radius: 8px;
+    box-shadow:
+        0 0 7px rgba(40, 160, 220, 0.12);
 
     transition: 0.2s;
 }
 
-
 .product:hover {
+    background: #f1faff;
 
-    background: #141725;
+    border-color: #55bdf0;
+    border-left-color: #159fe0;
 
-    border-left-color: #754cff;
+    box-shadow:
+        0 0 10px rgba(40, 160, 220, 0.22);
 }
 
 
@@ -499,130 +371,29 @@ select option {
 ===================================== */
 
 .product input[type="checkbox"] {
-
-    width: 20px;
-
-    height: 20px;
-
+    width: 21px;
+    height: 21px;
     flex-shrink: 0;
 
-    accent-color: #704cff;
-
+    accent-color: #20b86b;
     cursor: pointer;
 }
 
 
 /* =====================================
-   PRODUCT INFO
+   PRODUCTNAAM
 ===================================== */
 
-.productInfo {
-
+.product label {
     flex: 1;
-
     min-width: 0;
 
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 4px;
-}
-
-
-.productNaam {
-
-    color: #eeeeF5;
-
-    font-size: 17px;
-
-    font-weight: bold;
-}
-
-
-.hoeveelheid {
-
-    color: #777d96;
-
-    font-size: 13px;
-}
-
-
-/* =====================================
-   PLUS / MIN
-===================================== */
-
-.aantalControls {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 7px;
-
-    flex-shrink: 0;
-}
-
-
-.aantalControls button {
-
-    width: 36px;
-
-    height: 34px;
-
-    color: white;
-
-    border-radius: 7px;
-
-    font-size: 20px;
-
+    color: #24485d;
+    font-size: 15px;
     font-weight: bold;
 
     cursor: pointer;
-
-    transition: 0.2s;
-}
-
-
-.minKnop {
-
-    background: #181d35;
-
-    border: 1px solid #354cbb;
-}
-
-
-.minKnop:hover {
-
-    background: #293579;
-}
-
-
-.plusKnop {
-
-    background: #241735;
-
-    border: 1px solid #704cff;
-}
-
-
-.plusKnop:hover {
-
-    background: #492b70;
-}
-
-
-.aantalTekst {
-
-    min-width: 75px;
-
-    color: white;
-
-    text-align: center;
-
-    font-size: 13px;
-
-    font-weight: bold;
+    overflow-wrap: anywhere;
 }
 
 
@@ -630,33 +401,33 @@ select option {
    VERWIJDEREN
 ===================================== */
 
-.deleteKnop {
+.verwijder-btn {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
 
-    padding: 8px 12px;
+    color: #d52f40;
+    background: #fff1f2;
 
-    color: #d98cff;
+    border: 2px solid #ef7c84;
+    border-radius: 8px;
 
-    background: #241329;
+    box-shadow:
+        0 0 7px rgba(235, 70, 80, 0.18);
 
-    border: 1px solid #612b75;
-
-    border-radius: 7px;
-
-    font-size: 12px;
-
+    font-size: 23px;
     font-weight: bold;
+    line-height: 1;
 
     cursor: pointer;
-
     transition: 0.2s;
 }
 
+.verwijder-btn:hover {
+    background: #ffe0e3;
 
-.deleteKnop:hover {
-
-    color: white;
-
-    background: #63213e;
+    box-shadow:
+        0 0 11px rgba(235, 70, 80, 0.35);
 }
 
 
@@ -665,20 +436,15 @@ select option {
 ===================================== */
 
 .product.gehaald {
-
-    opacity: 0.5;
-
-    border-left-color: #704cff;
+    background: #effbf4;
+    border-left-color: #20b86b;
+    opacity: 0.75;
 }
 
-
-.product.gehaald .productNaam {
-
-    color: #777b91;
-
+.product.gehaald label {
+    color: #648574;
     text-decoration: line-through;
-
-    text-decoration-color: #754cff;
+    text-decoration-color: #20b86b;
 }
 
 
@@ -686,121 +452,94 @@ select option {
    MOBIEL
 ===================================== */
 
-/* =====================================
-   MOBIEL (Gecorrigeerd & Sluitend)
-===================================== */
-
 @media (max-width: 900px) {
+
     body {
-        padding: 20px 12px;
+        padding: 12px 8px;
+    }
+
+    .app {
+        padding: 16px 12px;
+        border-radius: 14px;
+    }
+
+    .appHeader {
+        margin-bottom: 18px;
+    }
+
+    h1 {
+        font-size: clamp(23px, 7vw, 29px);
+        letter-spacing: 0;
+        line-height: 1.2;
     }
 
     .invoer {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 12px;
     }
 
-    .app {
-        padding: 20px;
+    #toevoegen {
+        width: 100%;
+        height: 48px;
     }
 
-    h1 {
-        font-size: 32px;
+    .uitleg {
+        margin: 12px 0 20px;
+    }
+
+    .lijstActies {
+        justify-content: stretch;
+        margin-bottom: 20px;
+    }
+
+    #lijstLeegmaken {
+        width: 100%;
+        padding: 12px;
     }
 
     .product {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 16px;
+        gap: 9px;
+        padding: 11px 9px;
     }
 
-    .aantalControls {
-        justify-content: space-between;
+    .product label {
+        font-size: 14px;
+    }
+
+    .verwijder-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .categorie h2 {
+        font-size: 16px;
     }
 }
 
 
+/* =====================================
+   KLEINE MOBIELE SCHERMEN
+===================================== */
+
+@media (max-width: 360px) {
+
+    .app {
+        padding: 13px 9px;
+    }
 
     h1 {
-
-        font-size: 32px;
-
-        letter-spacing: 3px;
+        font-size: 23px;
     }
-
-
-    .invoer {
-
-        grid-template-columns: 1fr;
-    }
-
-
-    .productVeld {
-
-        grid-column: auto;
-    }
-
-
-    #toevoegen {
-
-        grid-column: auto;
-
-        width: 100%;
-
-        height: 50px;
-    }
-
-
-    .uitleg {
-
-        line-height: 1.7;
-    }
-
-
-    .lijstActies {
-
-        justify-content: stretch;
-    }
-
-
-    #lijstLeegmaken {
-
-        width: 100%;
-
-        padding: 12px;
-    }
-
 
     .product {
-
-        flex-wrap: wrap;
-
-        padding: 12px;
+        gap: 7px;
     }
 
-
-    .productInfo {
-
-        flex: 1;
-
-        min-width:
-            calc(100% - 45px);
+    .product label {
+        font-size: 13px;
     }
 
-
-    .aantalControls {
-
-        margin-left: 32px;
-    }
-
-
-    .deleteKnop {
-
-        margin-left: auto;
-
-        padding: 9px 11px;
-    }
-
+}
 
 
 /* =====================================
@@ -810,16 +549,7 @@ select option {
 @media (hover: none) {
 
     button {
-
         min-height: 42px;
-    }
-
-
-    .aantalControls button {
-
-        width: 42px;
-
-        height: 42px;
     }
 
 }
