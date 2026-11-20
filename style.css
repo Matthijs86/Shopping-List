@@ -957,4 +957,137 @@ select option {
     outline-offset: 3px;
 }
 
+/* ======================================
+   EXTRA LEESBARE BOODSCHAPPENLIJST
+   ====================================== */
+
+/* CATEGORIEKOPPEN */
+
+.categorie h2 {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #173d59;
+    text-transform: none;
+
+    padding: 12px 15px;
+}
+
+
+/* PRODUCTNAMEN EN HOEVEELHEDEN */
+
+.product label {
+    flex: 1;
+    min-width: 0;
+
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.4;
+
+    color: #173d59;
+}
+
+
+/* PLUS- EN MINKNOPPEN KLEINER */
+
+.hoeveelheid-knop {
+    width: 34px;
+    height: 34px;
+    min-height: 34px;
+
+    font-size: 21px;
+    border-radius: 9px;
+}
+
+
+/* VERWIJDERKNOP (X) KLEINER */
+
+.verwijder-btn {
+    width: 32px;
+    height: 32px;
+    min-height: 32px;
+
+    padding: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
+    line-height: 1;
+
+    flex-shrink: 0;
+}
+
+
+/* MOBIELE WEERGAVE */
+
+@media (max-width: 900px) {
+
+    .product {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 9px;
+    }
+
+    .product label {
+        font-size: 19px;
+        flex: 1;
+    }
+
+    .categorie h2 {
+        font-size: 22px;
+    }
+
+    .hoeveelheid-knop {
+        width: 36px;
+        height: 36px;
+        min-height: 36px;
+    }
+
+    .verwijder-btn {
+        width: 34px;
+        height: 34px;
+        min-height: 34px;
+    }
+}
+/* ======================================
+   VROLIJKER EN RONDER LETTERTYPE
+   ====================================== */
+
+.categorie h2 {
+    font-family:
+        "Trebuchet MS",
+        "Arial Rounded MT Bold",
+        sans-serif;
+
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+
+.product label,
+.productNaam,
+.hoeveelheid {
+    font-family:
+        "Trebuchet MS",
+        "Arial Rounded MT Bold",
+        sans-serif;
+}
+
+.productNaam {
+    font-size: 20px;
+    font-weight: 800;
+    color: #173d59;
+}
+
+.hoeveelheid {
+    font-size: 17px;
+    font-weight: 700;
+    color: #285b78;
+}
+
 
