@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -12,7 +13,7 @@
 
     <meta
         name="theme-color"
-        content="#08090d"
+        content="#123b68"
     >
 
     <meta
@@ -23,9 +24,7 @@
     <title>Boodschappenlijst</title>
 
 
-    <!-- ==========================
-         PWA MANIFEST
-    =========================== -->
+    <!-- PWA MANIFEST -->
 
     <link
         rel="manifest"
@@ -33,9 +32,7 @@
     >
 
 
-    <!-- ==========================
-         APPLE / IPHONE
-    =========================== -->
+    <!-- APPLE / IPHONE -->
 
     <meta
         name="apple-mobile-web-app-capable"
@@ -52,17 +49,13 @@
         content="Boodschappen"
     >
 
-    <!-- NIEUW JUIST ICOON -->
-
     <link
         rel="apple-touch-icon"
         href="/Shopping-List/icon-192.png"
     >
 
 
-    <!-- ==========================
-         CSS
-    =========================== -->
+    <!-- CSS -->
 
     <link
         rel="stylesheet"
@@ -77,13 +70,15 @@
     <main class="app">
 
 
-        <!-- ==========================
-             HEADER
-        =========================== -->
+        <!-- HEADER -->
 
         <header class="appHeader">
 
-            <h1>Boodschappenlijst</h1>
+            <img
+                class="headerAfbeelding"
+                src="/Shopping-List/boodschappenlijst-header.png"
+                alt="Boodschappenlijst - Alles op een rijtje!"
+            >
 
             <p
                 class="status"
@@ -95,9 +90,7 @@
         </header>
 
 
-        <!-- ==========================
-             PRODUCT TOEVOEGEN
-        =========================== -->
+        <!-- PRODUCT TOEVOEGEN -->
 
         <section class="invoer">
 
@@ -206,92 +199,4 @@
 
                     <option value="Snacks">
                         Snacks
-                    </option>
-
-                    <option value="Houdbaar">
-                        Houdbaar
-                    </option>
-
-                    <option value="Huishouden">
-                        Huishouden
-                    </option>
-
-                    <option value="Persoonlijke verzorging">
-                        Persoonlijke verzorging
-                    </option>
-
-                    <option value="Overig">
-                        Overig
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <!-- TOEVOEGEN -->
-
-            <button
-                id="toevoegen"
-                type="button"
-            >
-                + Toevoegen
-            </button>
-
-        </section>
-
-
-        <!-- ==========================
-             UITLEG
-        =========================== -->
-
-        <p class="uitleg">
-
-            Gram: +50 g
-            &nbsp;•&nbsp;
-            ml: +100 ml
-            &nbsp;•&nbsp;
-            Stuk: +1
-
-        </p>
-
-
-        <!-- ==========================
-             LIJST ACTIES
-        =========================== -->
-
-        <div class="lijstActies">
-
-            <button
-                id="lijstLeegmaken"
-                type="button"
-            >
-                Lijst leegmaken
-            </button>
-
-        </div>
-
-
-        <!-- ==========================
-             BOODSCHAPPENLIJST
-        =========================== -->
-
-        <div
-            id="boodschappenLijst"
-        ></div>
-
-
-    </main>
-
-
-    <!-- ==========================
-         JAVASCRIPT
-    =========================== -->
-
-    <script
-        src="/Shopping-List/script.js"
-    ></script>
-
-</body>
-
-</html>
+                    </option
