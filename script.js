@@ -280,6 +280,31 @@ function verwijderProduct(index) {
     toonLijst();
 
 }
+// ======================================
+// HOEVEELHEID AANPASSEN MET PLUS EN MIN
+// ======================================
+
+function wijzigHoeveelheid(index, richting) {
+
+    if (!producten[index]) {
+        return;
+    }
+
+    const stap = krijgStap(producten[index].eenheid);
+
+    const huidigeHoeveelheid =
+        Number(producten[index].hoeveelheid);
+
+    producten[index].hoeveelheid = Math.max(
+        0,
+        huidigeHoeveelheid + (richting * stap)
+    );
+
+    opslaan();
+
+    toonLijst();
+
+}
 
 
 // ======================================
@@ -439,6 +464,33 @@ function toonLijst() {
                         }
                     );
 
+                    // Minknop
+
+const minKnop = document.createElement("button");
+
+minKnop.type = "button";
+minKnop.className = "hoeveelheid-knop hoeveelheid-min";
+minKnop.textContent = "−";
+
+minKnop.addEventListener("click", function(event) {
+    event.stopPropagation();
+    wijzigHoeveelheid(index, -1);
+});
+
+
+// Plusknop
+
+const plusKnop = document.createElement("button");
+
+plusKnop.type = "button";
+plusKnop.className = "hoeveelheid-knop hoeveelheid-plus";
+plusKnop.textContent = "+";
+
+plusKnop.addEventListener("click", function(event) {
+    event.stopPropagation();
+    wijzigHoeveelheid(index, 1);
+});
+
 
                     // Verwijderknop
 
@@ -476,6 +528,13 @@ function toonLijst() {
                     productRegel.appendChild(
                         infoLabel
                     );
+                    productRegel.appendChild(
+    minKnop
+);
+
+productRegel.appendChild(
+    plusKnop
+);
 
                     productRegel.appendChild(
                         verwijderKnop
