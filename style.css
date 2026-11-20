@@ -553,3 +553,269 @@ select option {
     }
 
 }
+
+/* ======================================
+   NIEUWE BOODSCHAPPENLIJST VORMGEVING
+====================================== */
+
+/* ACHTERGROND */
+
+html {
+    background: #123b68;
+}
+
+body {
+    color: #12365d;
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            #2865a0,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            #174d7c,
+            transparent 40%
+        ),
+        #123b68;
+}
+
+
+/* APP-PANEEL */
+
+.app {
+    background: #eaf6ff;
+
+    border: 2px solid #55dfff;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 0 15px rgba(40, 220, 255, 0.35),
+        0 0 35px rgba(40, 255, 140, 0.15);
+}
+
+
+/* HEADERAFBEELDING */
+
+.appHeader {
+    margin-bottom: 28px;
+}
+
+.headerAfbeelding {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    border: 3px solid #39ff88;
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 10px #39ff88,
+        0 0 22px rgba(57, 255, 136, 0.8),
+        0 0 40px rgba(57, 255, 136, 0.35);
+}
+
+
+/* STATUS */
+
+.status {
+    color: #24618a;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status.offline {
+    color: #d93655;
+}
+
+
+/* INVOERPANEEL */
+
+.invoer {
+    padding: 20px;
+
+    background: #d9efff;
+
+    border: 2px solid #ffffff;
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 8px rgba(57, 255, 136, 0.6),
+        0 0 20px rgba(57, 255, 136, 0.35);
+}
+
+
+/* LABELS */
+
+.veld label {
+    color: #174b78;
+    font-size: 12px;
+}
+
+
+/* INVOERVELDEN */
+
+input,
+select {
+    color: #123b68;
+
+    background: #f5fbff;
+
+    border: 2px solid #39d98a;
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 7px rgba(57, 255, 136, 0.45),
+        0 0 14px rgba(57, 255, 136, 0.2);
+}
+
+input:focus,
+select:focus {
+    border-color: #00ed75;
+
+    box-shadow:
+        0 0 10px #39ff88,
+        0 0 22px rgba(57, 255, 136, 0.75);
+}
+
+input::placeholder {
+    color: #7293ad;
+}
+
+select option {
+    color: #123b68;
+    background: #f5fbff;
+}
+
+
+/* TOEVOEGEN-KNOP */
+
+#toevoegen {
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #00a94f,
+        #00df70
+    );
+
+    border: 2px solid #39ff88;
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 10px rgba(57, 255, 136, 0.65),
+        0 0 20px rgba(57, 255, 136, 0.3);
+}
+
+
+/* UITLEG */
+
+.uitleg {
+    color: #456b89;
+}
+
+
+/* LIJST LEEGMAKEN */
+
+#lijstLeegmaken {
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #087ac0,
+        #07549a
+    );
+
+    border: 2px solid #36cfff;
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 10px rgba(54, 207, 255, 0.45);
+}
+
+
+/* CATEGORIEËN */
+
+.categorie h2 {
+    color: #174b78;
+
+    background: #d5edff;
+
+    border-left: 5px solid #39d98a;
+    border-radius: 10px;
+}
+
+
+/* PRODUCTREGELS */
+
+.product {
+    color: #123b68;
+
+    background: #e2f3ff;
+
+    border: 2px solid #b5e5ff;
+    border-left: 4px solid #39d98a;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 8px rgba(54, 207, 255, 0.2);
+}
+
+.product:hover {
+    background: #d4edff;
+    border-left-color: #00c96b;
+}
+
+.product label {
+    color: #123b68;
+    font-weight: bold;
+}
+
+.product input[type="checkbox"] {
+    accent-color: #00bd62;
+}
+
+.product.gehaald {
+    opacity: 0.55;
+    border-left-color: #00bd62;
+}
+
+
+/* LEGE LIJST */
+
+.legeLijst {
+    color: #456b89;
+}
+
+.legeLijst h2 {
+    color: #174b78;
+}
+
+
+/* MOBIEL */
+
+@media (max-width: 600px) {
+
+    .app {
+        padding: 14px;
+        border-radius: 16px;
+    }
+
+    .appHeader {
+        margin-bottom: 20px;
+    }
+
+    .headerAfbeelding {
+        border-radius: 12px;
+    }
+
+    .invoer {
+        padding: 14px;
+    }
+
+}
+
