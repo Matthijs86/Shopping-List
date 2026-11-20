@@ -2,7 +2,7 @@
 // BOODSCHAPPENLIJST PWA - SERVICE WORKER
 // ======================================
 
-const CACHE_NAME = "boodschappenlijst-v13";
+const CACHE_NAME = "boodschappenlijst-v14";
 
 const APP_BESTANDEN = [
     "/Shopping-List/",
